@@ -11,9 +11,12 @@ starsArray.map((star, index) => {
 });
 
 const allStars = document.querySelectorAll(".star");
+const result = document.createElement('p');
+rootDiv.appendChild(result);
+
 Array.from(allStars).map(star => {
   star.addEventListener('click', () => {
-    console.log(star.dataset.value);
+    result.innerHTML = `${star.dataset.value}`;
   })
 })
 
