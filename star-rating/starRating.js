@@ -19,10 +19,14 @@ starsArray.map((star, index) => {
 });
 
 rootElement.appendChild(starFragment);
+const starArray = Array.from(document.querySelectorAll('.star'));
 
-Array.from(document.querySelectorAll('.star')).map(icon => {
-  icon.addEventListener('click', () => {
-    console.log(icon.dataset.value);
-  })
+starArray.map(item => {
+  item.addEventListener('click', () => {
+    const newArray = starArray.slice(0, item.dataset.value - 1);
+    console.log(newArray);
+  });
+
+  console.log(item);
 });
 
