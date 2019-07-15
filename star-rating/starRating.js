@@ -1,24 +1,28 @@
-const starsArray = new Array(5).fill("*");
+const starsArray = [
+  "star-outline",
+  "star-outline",
+  "star-outline",
+  "star-outline",
+  "star-outline"
+];
 
-const rootDiv = document.querySelector("#root");
+
+const rootElement = document.querySelector("#root");
+const starFragment = document.createDocumentFragment();
 
 starsArray.map((star, index) => {
-  const starElement = document.createElement("div");
-  starElement.innerHTML = `<ion-icon name="star-outline"></ion-icon>`;
-  starElement.classList.add("star");
-  starElement.setAttribute("data-value", `${index + 1}`)
-  rootDiv.appendChild(starElement);
+  const icon = document.createElement("ion-icon");
+  icon.setAttribute("name", star);
+  icon.setAttribute("data-value", index + 1);
+  icon.classList.add("star");
+  starFragment.appendChild(icon);
 });
 
-const allStars = document.querySelectorAll(".star");
-const result = document.createElement('p');
-rootDiv.appendChild(result);
+rootElement.appendChild(starFragment);
 
-Array.from(allStars).map(star => {
-  star.addEventListener('click', () => {
-    result.innerHTML = `${star.dataset.value}`;
+Array.from(document.querySelectorAll('.star')).map(icon => {
+  icon.addEventListener('click', () => {
+    console.log(icon.dataset.value);
   })
-})
-
-
+});
 
